@@ -1,6 +1,8 @@
 const express = require('express')
 const User = require('../models/user')
 const ToDo = require('../models/todo')
+const config = require('../db/mysql');
+const db = require('../db/mysql_connection')
 
 const router = new express.Router()
 
@@ -63,5 +65,28 @@ router.get('/all/:userid', async (req, res)=> {
         res.send('Error in getting all todo')
     }
 })
+
+//SQL SignUp new user in mysql DB
+router.post('/sql/newuser', async (req, res) => {
+    const result = await db.query(
+        `INSERT INTO users 
+        (name, email, password) 
+        VALUES 
+        (?, ?, ?)`, 
+        [
+          req.body.name, req.body.email, req.body.password
+        ]
+      );
+    
+      let message = 'Error in creating user';
+    
+      if (result.affectedRows) {
+        message = 'user created successfully';
+      }
+    
+      return {message};
+    })
+
+
 
 module.exports = router
