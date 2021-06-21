@@ -4,16 +4,34 @@ const ToDo = require('../models/todo')
 
 const router = new express.Router()
 
+//Login a user
+router.post('/users/login', async (req, res) => {
+    try {
+        const user = await User.findByEmailAndPassword(req.body.email, req.body.password)
+        await user.generateAuthToken()
+        if (user){
+            res.send('loged in')
+        }else {
+            res.send('unable to login')
+        }
+        
+    } catch (error) {
+        res.status(400).send(error)
+    }
+})
+
 //creat new user
 router.post('/newuser', async (req, res) => {
     const user = new User({
-        name:'user1',
-        email:'user1@gmail.com'
+        name:'user2',
+        email:'user2@gmail.com',
+        password:'123456'
     })
 
     try {
         await user.save()
-        res.status(201).send(user)
+        const token = await user.generateAuthToken()
+        res.status(201).send({user,token})
     } catch (e) {
         res.status(400).send(e)
     }
