@@ -1,6 +1,9 @@
 const express = require('express')
 const ToDo = require('../models/todo')
 
+const config = require('../db/mysql');
+const db = require('../db/mysql_connection')
+
 const router = new express.Router()
 
 //Add new todo for specific user
@@ -68,6 +71,7 @@ router.post('/sql/addtodo/:id', async (req, res) => {
           user_id
         ]
       ) 
+      res.send('todo added successfully')
 })
 
 //SQL Update an existing todo for specific user
@@ -93,7 +97,7 @@ router.patch('/sql/todo/:id', async (req, res) => {
     }
 })
 
-//SQL Update an existing todo for specific user
+//SQL delete an existing todo for specific user
 router.delete('/sql/todo/:id', async (req, res) => {
     const owner = req.params.id
     
