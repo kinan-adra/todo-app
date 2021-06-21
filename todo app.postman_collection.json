@@ -1,0 +1,141 @@
+{
+	"info": {
+		"_postman_id": "ea234e95-41fa-43c7-9ea7-c7160c8d0757",
+		"name": "todo app",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "add new todo",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"information\":\"any information\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/addtodo/60d0573bcdf4660988034d69",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"addtodo",
+						"60d0573bcdf4660988034d69"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add new user",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/newuser",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"newuser"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update todo",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"information\":\"any information updated\",\r\n    \"isDone\":true\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/todo/60d057c1dd7f43284406bb79",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"todo",
+						"60d057c1dd7f43284406bb79"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete one todo",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/todo/60d057c1dd7f43284406bb79",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"todo",
+						"60d057c1dd7f43284406bb79"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get todo for user",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/users/60d0573bcdf4660988034d69/60d05da41b4f1133b8f96f34",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"users",
+						"60d0573bcdf4660988034d69",
+						"60d05da41b4f1133b8f96f34"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get all todo",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/all/60d0573bcdf4660988034d69",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"all",
+						"60d0573bcdf4660988034d69"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
